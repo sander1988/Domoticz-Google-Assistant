@@ -380,10 +380,10 @@ class OpenCloseTrait(_Trait):
             url = DOMOTICZ_URL + '/json.htm?type=command&param=switchlight&idx=' + self.state.id + '&switchcmd='
             
             if domain == domains['blindsinv']:
-              if p == 0 and state in ['Closed', 'Stopped', 'On']:
+              if p == 0:
                   # open
                   url += 'Off'
-              elif p == 100 and state in ['Open', 'Stopped', 'Off']:
+              elif p == 100:
                   # close
                   url += 'On'
               else:
@@ -391,10 +391,10 @@ class OpenCloseTrait(_Trait):
                                        'Unable to execute {} for {}. Already in state '.format(command,
                                                                                                self.state.entity_id))
             else:
-              if p == 100 and state in ['Closed', 'Stopped', 'On']:
+              if p == 100:
                   # open
                   url += 'Off'
-              elif p == 0 and state in ['Open', 'Stopped', 'Off']:
+              elif p == 0:
                   # close
                   url += 'On'
               else:
